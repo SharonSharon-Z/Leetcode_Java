@@ -1,1 +1,34 @@
-
+class Solution {
+    public int singleNumber(int[] nums) {
+        // using hashtable.getOrDefault()
+//         HashMap<Integer, Integer> hashtable = new HashMap<Integer, Integer>();
+        
+//         for (int num : nums){
+//             hashtable.put(num, hashtable.getOrDefault(num,0) + 1);
+//         }
+        
+//         for (int num: nums){
+//             if (hashtable.get(num) == 1){
+//                 return num;
+//             }
+//         }
+//         return 0;
+        
+        // basic method
+        HashMap<Integer, Integer> hashtable = new HashMap<Integer, Integer>();
+        for (int num: nums){
+            if (hashtable.containsKey(num)){
+                hashtable.put(num, 2);
+            } else {
+                hashtable.put(num, 1);
+            }
+        }
+        
+        for (int num: nums){
+            if (hashtable.get(num) == 1){
+                return num;
+            }
+        }
+        return 0;
+    }
+}
