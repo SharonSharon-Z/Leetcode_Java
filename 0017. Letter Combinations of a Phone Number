@@ -1,1 +1,29 @@
+// backtracking
+// 1. choice
+// 2. constrain: none
+// 3. goal
+class Solution {
+    String[] mapping = new String[] {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
+    public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
+        if (digits.length()!=0) {
+            letterComb(digits, 0, "", result);
+        }
+        return result;
+    }
+    
+    private void letterComb (String digits, int i, String letter, List<String> result ) {
+        if (i == digits.length()) {
+            result.add( new String(letter));
+        } else {
+            String options = mapping[digits.charAt(i) - '0'];
+            for (int j = 0; j < options.length(); j++) {
+                letter = letter + options.charAt(j);
+                letterComb (digits, i+1, letter, result);
+                letter = letter.substring(0, letter.length()-1);
+            }
+            
+        }
+    } 
+}
