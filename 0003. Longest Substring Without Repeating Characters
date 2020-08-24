@@ -1,1 +1,30 @@
-
+class Solution {
+    
+    // Method1 brute force using arraylist
+    public int lengthOfLongestSubstring(String s) {
+        ArrayList<Character> helperArray = new ArrayList<>();
+        int longest = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (helperArray.contains(s.charAt(i))) {
+                longest = Math.max(longest, helperArray.size());
+                for (int j = 0; j < longest; j++) {     
+                    if (helperArray.get(j) == s.charAt(i)) {
+                        for (int k = j; k>=0; k--){
+                            helperArray.remove(k);
+                        }
+                        break;
+                    } 
+                }
+            } 
+            helperArray.add(s.charAt(i));
+        } 
+        return longest = Math.max(longest, helperArray.size());
+    }
+    
+    
+    
+       //Mehtod2 
+//     public int lengthOfLongestSubstring(String s) {
+        
+//     }
+}
