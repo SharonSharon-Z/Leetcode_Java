@@ -1,1 +1,26 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+        generate(n, 0, 0, "", result);
+        return result;
+    }
+    
+    private void generate(int n, int l, int r, String item, List<String> result) {
+        String choices = "()";
+        if(l == n && r == n ) {
+            result.add(new String(item));
+        } else {
+            for(int i = 0; i < choices.length(); i++){
+                item = item + choices.charAt(i);
+    
+                if ( l >= r && l <= n) {
+                    if (i == 0) generate(n, l+1, r , item, result);
+                    else generate(n, l, r+1 , item, result);
+                }
+                item = item.substring(0, item.length()-1);
+            }
+        }
+    }
+    
 
+}
