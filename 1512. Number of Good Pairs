@@ -1,1 +1,53 @@
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        // brute force 
+        // hashtable  O(n2)
+//         HashMap<Integer, Integer> hashtable = new HashMap<Integer, Integer>();
+//         int count = 0;
+        
+//         for (int i = 0; i < nums.length; i++){
+//             if (!hashtable.containsKey(nums[i])){
+//                 hashtable.put(nums[i],0);
+//             } 
+                
+//             for(int j = i+ 1; j < nums.length; j++){
+                
+//                 if (nums[i]==nums[j]){
+//                     count += 1;
+//                 } 
+//             }
+//         }
+//         return count;
+        
+        // array O(n2)
+//         List<Integer> array = new ArrayList<>();
+//         int count = 0;
+        
+//         for (int i = 0;i<nums.length;i++){
+//             if (!array.contains(nums[i])){
+//                 array.add(nums[i]);
+//             }
+            
+//             for (int j = i+1;j<nums.length;j++){
+//                 if(nums[i]==nums[j]){
+//                     count += 1;
+//                 }
+//             }
+//         }
+//         return count;
+        
+        // array O(n)
+        int result = 0;
+        int[] counts = new int[101];
+        
+        for (int n: nums){
+            counts[n] += 1;
+        }
+        
+        for (int n: counts){
+            result += (n*(n-1) / 2);
+        }
+        return result;
 
+    }
+}
